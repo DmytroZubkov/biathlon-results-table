@@ -1,0 +1,67 @@
+:root {
+    --main-bg-color: #f2f2f2;
+    --main-container-color: #fff;
+    --table-th-color: #e4e4e4;
+    --table-tr-even: #eee;
+}
+
+    body {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px 0px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 16px;
+        background-color: var(--main-bg-color);
+    }
+
+    h1 {
+        text-align: center;
+        margin: unset;
+        text-transform: uppercase;
+    }
+
+    
+    table {
+        width: 100%;
+        table-layout: auto;
+        border-collapse: collapse;
+        font-size: 1.25em;
+    }
+
+    caption {
+        caption-side: top;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding-bottom: 5px;
+    }
+
+    th {
+        background-color: var(--table-th-color);
+        border: 2px solid var(--main-bg-color);
+        padding: .5em;
+        cursor: pointer;
+    }
+
+    td {
+        border: 1px solid var(--main-bg-color);
+        text-align: center;
+        font-size: 1em;
+        padding: 0.3em;
+    }
+
+    td:nth-child(3) {
+        text-align: left;
+    }
+
+    tbody tr:nth-child(even) {
+        background: var(--table-tr-even);
+      }
+
+    .container {
+        margin: 10px 0px;
+        padding: 20px 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        background-color: var(--main-container-color);
+    }
