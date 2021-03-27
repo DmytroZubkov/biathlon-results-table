@@ -13,156 +13,36 @@
         <div class="container">
             <h1>Biathlon Championship</h1>
         </div>
+        <!-- <div class="container">
+            <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
+
+                <fieldset>
+                  <h2>Json File</h2>
+                   <input type='file' id='fileinput'>
+                   <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+                </fieldset>
+              </form>
+        </div> -->
         <div class="container">
             <table id="results">
                 <caption>Biathlon Competition Results</caption>
-                <thead>
-                    <tr>
+                <thead id="results-header">
+                    <!-- <tr>
                         <th class=td_top10><span class=news_title>Position</span></th>
-                        <th class=td_top10><span class=news_title>Country</span></th>
                         <th class=td_top10><span class=news_title>Name</span></th>
-                        <th class=td_top10><span class=news_title>№</span></th>
                         <th class=td_top10><span class=news_title>Shooting</span></th>
                         <th class=td_top10><span class=news_title>Total</span></th>
                         <th class=td_top10><span class=news_title>Time</span></th>
                         <th class=td_top10><span class=news_title>Behind previous</span></th>
-                    </tr>
+                    </tr> -->
                 </thead>
-                <tbody>
-                    <tr id="48" class="td_top10w">
-                        <td>1</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=4291">Андрій Доценко</a></td>
-                        <td>0</td>
-                        <td>1+0+0+1</td>
-                        <td>2</td>
-                        <td>39:31.9</td>
-                        <td></td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>2</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=4700">Руслан Бригадир</a></td>
-                        <td>0</td>
-                        <td>1+1+0+1</td>
-                        <td>3</td>
-                        <td>40:32.1</td>
-                        <td>+1:00.2</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>3</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=3716">Віталій Труш</a></td>
-                        <td>0</td>
-                        <td>4+2+1+1</td>
-                        <td>8</td>
-                        <td>41:14.8</td>
-                        <td>+1:42.9</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>4</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=4460">Сергій Телень</a></td>
-                        <td>0</td>
-                        <td>2+0+3+2</td>
-                        <td>7</td>
-                        <td>41:21.0</td>
-                        <td>+1:49.1</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>5</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=4701">Євген Івченко</a></td>
-                        <td>0</td>
-                        <td>3+0+1+1</td>
-                        <td>5</td>
-                        <td>41:34.5</td>
-                        <td>+2:02.6</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>6</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=5755">Роман Боровик</a></td>
-                        <td>0</td>
-                        <td>3+1+1+2</td>
-                        <td>7</td>
-                        <td>41:42.5</td>
-                        <td>+2:10.6</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>7</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=5681">Микола Ничипоренко</a></td>
-                        <td>0</td>
-                        <td>2+1+1+3</td>
-                        <td>7</td>
-                        <td>41:52.3</td>
-                        <td>+2:20.4</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>8</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=3553">Денис Насико</a></td>
-                        <td>0</td>
-                        <td>2+1+2+4</td>
-                        <td>9</td>
-                        <td>42:07.9</td>
-                        <td>+2:36.0</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>9</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=7260">Владислав Чихар</a></td>
-                        <td>0</td>
-                        <td>2+3+0+2</td>
-                        <td>7</td>
-                        <td>42:14.8</td>
-                        <td>+2:42.9</td>
-                    </tr>
-
-                    <tr id="48" class="td_top10w">
-                        <td>10</td>
-                        <td><img style='Cursor: pointer;' onclick='changeColor(48, "results");'
-                                src="img/53.gif">
-                        </td>
-                        <td><a href="profile.php?id=5792">Володимир Кошман</a></td>
-                        <td>0</td>
-                        <td>0+2+2+2</td>
-                        <td>6</td>
-                        <td>42:22.1</td>
-                        <td>+2:50.2</td>
-                    </tr>
-
+                <tbody id="results-body">
                 </tbody>
             </table>
         </div>
     </div>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
