@@ -44,7 +44,8 @@
 //     }
 // }
 
-let headerArr = []
+// Collect JSON property names to use them as table columns names
+let headerArr = [];
 competitors.forEach(arrObject => {
     let x = Object.getOwnPropertyNames(arrObject);
     x.forEach(el => {
@@ -54,8 +55,9 @@ competitors.forEach(arrObject => {
     });
 });
 
-let header = document.getElementById('results-header');
-let th = document.createElement('tr');
+//Add headers row to the results table
+let header = document.getElementById("results-header");
+let th = document.createElement("tr");
 th.innerHTML = `<th>${headerArr[0]}</th>
 <th>${headerArr[1]}</th>
 <th>${headerArr[2]}</th>
@@ -64,14 +66,17 @@ th.innerHTML = `<th>${headerArr[0]}</th>
 <th>${headerArr[5]}</th>`;
 header.appendChild(th);
 
-let table = document.getElementById('results-body');
+//Add results rows for each competitor
+let table = document.getElementById("results-body");
 competitors.forEach(function (object) {
-    let tr = document.createElement('tr');
+    let tr = document.createElement("tr");
     tr.innerHTML = `<td>${object.Position}</td>
     <td>${object.Name}</td>
     <td>${object.Shooting}</td>
     <td>${object.Total}</td>
     <td>${object.Time}</td>
-    <td>${object['Time difference'] == undefined ? "" : object['Time difference']}</td>`;
+    <td>${object["Time difference"] == undefined
+    ? ""
+    : object["Time difference"]}</td>`;
     table.appendChild(tr);
 });
