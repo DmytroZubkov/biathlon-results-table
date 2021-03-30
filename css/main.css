@@ -37,6 +37,7 @@
     }
 
     th {
+        text-transform: capitalize;
         background-color: var(--table-th-color);
         border: 2px solid var(--main-bg-color);
         padding: .5em;
@@ -54,9 +55,9 @@
         text-align: left;
     }
 
-    tbody tr:nth-child(even) {
+    /* tbody tr:nth-child(even) {
         background: var(--table-tr-even);
-      }
+      } */
 
     .container {
         margin: 10px 0px;

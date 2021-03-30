@@ -1,49 +1,4 @@
 
-// https://stackoverflow.com/questions/7346563/loading-local-json-file/21446426#21446426
-// function loadFile() {
-//     var input, file, fr;
-
-//     if (typeof window.FileReader !== 'function') {
-//         alert("The file API isn't supported on this browser yet.");
-//         return;
-//     }
-
-//     input = document.getElementById('fileinput');
-//     if (!input) {
-//         alert("Um, couldn't find the fileinput element.");
-//     }
-//     else if (!input.files) {
-//         alert("This browser doesn't seem to support the `files` property of file inputs.");
-//     }
-//     else if (!input.files[0]) {
-//         alert("Please select a file before clicking 'Load'");
-//     }
-//     else {
-//         file = input.files[0];
-//         fr = new FileReader();
-//         fr.onload = receivedText;
-//         fr.readAsText(file);
-//     }
-
-//     function receivedText(e) {
-//         let lines = e.target.result;
-//         let newArr = JSON.parse(lines);
-//         console.log(newArr);
-
-//         let table = document.getElementById('results-body');
-//         newArr.forEach(function (object) {
-//             let tr = document.createElement('tr');
-//             tr.innerHTML = '<td>' + object.Position + '</td>' +
-//                 '<td>' + object.Name + '</td>' +
-//                 '<td>' + object.Shooting + '</td>' +
-//                 '<td>' + object.Total + '</td>' +
-//                 '<td>' + object.Time + '</td>' +
-//                 '<td>' + object['Time difference'] + '</td>';
-//             table.appendChild(tr);
-//         });
-//     }
-// }
-
 // Collect JSON property names to use them as table columns names
 let headerArr = [];
 competitors.forEach(arrObject => {
@@ -57,26 +12,66 @@ competitors.forEach(arrObject => {
 
 //Add headers row to the results table
 let header = document.getElementById("results-header");
-let th = document.createElement("tr");
-th.innerHTML = `<th>${headerArr[0]}</th>
+let thCreate = document.createElement("tr");
+thCreate.innerHTML = `<th>${headerArr[0]}</th>
 <th>${headerArr[1]}</th>
 <th>${headerArr[2]}</th>
 <th>${headerArr[3]}</th>
 <th>${headerArr[4]}</th>
 <th>${headerArr[5]}</th>`;
-header.appendChild(th);
+header.appendChild(thCreate);
+
+function trPaint() {
+    let evenRows = table.querySelectorAll('tr:nth-child(even)');
+    evenRows.forEach((evenRow) => { evenRow.style.background = 'var(--table-tr-even)'; });
+};
 
 //Add results rows for each competitor
 let table = document.getElementById("results-body");
 competitors.forEach(function (object) {
-    let tr = document.createElement("tr");
-    tr.innerHTML = `<td>${object.Position}</td>
-    <td>${object.Name}</td>
-    <td>${object.Shooting}</td>
-    <td>${object.Total}</td>
-    <td>${object.Time}</td>
-    <td>${object["Time difference"] == undefined
-    ? ""
-    : object["Time difference"]}</td>`;
-    table.appendChild(tr);
+    let trCreate = document.createElement("tr");
+    trCreate.innerHTML = `<td>${object.position}</td>
+    <td>${object.name}</td>
+    <td>${object.shooting}</td>
+    <td>${object.total}</td>
+    <td>${object.time}</td>
+    <td>${object.difference == undefined ? "" : object.difference}</td>`;
+    table.appendChild(trCreate);
+    trPaint();
 });
+
+
+// Sorting table
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2))(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    const tbody = table.querySelector('tbody');
+    Array.from(tbody.querySelectorAll('tr'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => tbody.appendChild(tr));
+})));
+
+// Search a name
+function searchFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById('names');
+    filter = input.value.toUpperCase();
+    table = document.getElementById('results-body');
+    tr = table.getElementsByTagName('tr');
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName('td')[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = '';
+            } else {
+                tr[i].style.display = 'none';
+            }
+        }
+    }
+};
+
