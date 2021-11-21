@@ -21,10 +21,6 @@ thCreate.innerHTML = `<th>${headerArr[0]}</th>
 <th>${headerArr[5]}</th>`;
 header.appendChild(thCreate);
 
-function trPaint() {
-    let evenRows = table.querySelectorAll('tr:nth-child(even)');
-    evenRows.forEach((evenRow) => { evenRow.style.background = 'var(--table-tr-even)'; });
-};
 
 //Add results rows for each competitor
 let table = document.getElementById("results-body");
@@ -37,7 +33,6 @@ competitors.forEach(function (object) {
     <td>${object.time}</td>
     <td>${object.difference == undefined ? "" : object.difference}</td>`;
     table.appendChild(trCreate);
-    // trPaint();
 });
 
 
@@ -65,6 +60,7 @@ function searchFunction() {
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName('td')[1];
+        tr[i].style.background = 'var(--main-container-color)';
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
