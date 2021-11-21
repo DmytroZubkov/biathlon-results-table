@@ -55,9 +55,9 @@
         text-align: left;
     }
 
-    /* tbody tr:nth-child(even) {
+    tbody tr:nth-child(even) {
         background: var(--table-tr-even);
-      } */
+    }
 
     .container {
         margin: 10px 0px;

@@ -37,7 +37,7 @@ competitors.forEach(function (object) {
     <td>${object.time}</td>
     <td>${object.difference == undefined ? "" : object.difference}</td>`;
     table.appendChild(trCreate);
-    trPaint();
+    // trPaint();
 });
 
 
@@ -60,6 +60,7 @@ function searchFunction() {
     filter = input.value.toUpperCase();
     table = document.getElementById('results-body');
     tr = table.getElementsByTagName('tr');
+    let filteredArr = [];
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
@@ -68,10 +69,18 @@ function searchFunction() {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = '';
+                filteredArr.push(tr[i])
             } else {
                 tr[i].style.display = 'none';
-            }
-        }
-    }
+            };
+        };
+    };
+    for (let i = 1; i < filteredArr.length; i++) {
+        if (i % 2) {
+            filteredArr[i].style.background = 'var(--table-tr-even)';
+        } else {
+            filteredArr[i].style.background = 'var(--main-container-color)';
+        };
+    };
 };
 
